@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
+
+
+
+    <title>Document</title>
+    <style>
+        header.top {
+            margin-bottom: 2.5em;
+        }
+
+        nav {
+            background-color: #ccc;
+        }
+
+        nav ul a,
+        nav .sidenav-trigger i {
+            color: #575757;
+        }
+
+        nav .sidenav-trigger {
+            float: right;
+        }
+
+        .brand-logo img {
+            width: 55px;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        /*---------- vertical icon menu ----------*/
+        div#menu-lateral {
+            position: relative;
+            max-width: 280px;
+            padding-top: 2.5em;
+        }
+
+        li.menu-item {
+            background-color: grey;
+        }
+
+
+        li.menu-item i.iconMenu {
+            color: #fff;
+        }
+
+        li.menu-item:hover,
+        li.menu-item:focus-within {
+            background-color: white;
+        }
+
+        li.menu-item:hover i.iconMenu,
+        li.menu-item:focus-within i.iconMenu {
+            color: grey;
+        }
+
+        ul#menu-menu-lateral li {
+            border-bottom: 1px solid #ccc;
+            padding: 0.5rem;
+        }
+
+        ul#menu-menu-lateral li a {
+            font-size: 1.2em;
+            color: #fff;
+            height: 100%;
+            width: 100%;
+        }
+
+        ul#menu-menu-lateral li:hover,
+        ul#menu-menu-lateral li:focus-within {
+            background-color: #fff;
+        }
+
+        ul#menu-menu-lateral li:hover>a,
+        ul#menu-menu-lateral li:focus-within>a {
+            color: #666;
+        }
+
+        #menu-lateral ul.menu .sub-menu {
+            display: none;
+        }
+
+
+        #menu-lateral ul.menu li:hover>.sub-menu,
+        #menu-lateral ul.menu li:focus-within>.sub-menu {
+            display: inline-table;
+            position: relative;
+            width: 100%;
+        }
+
+
+        ul#menu-menu-lateral li>.sub-menu li>a {
+            font-size: 1em;
+            color: grey;
+        }
+
+        ul#menu-menu-lateral li>.sub-menu li {
+            background-color: #fff;
+        }
+
+        ul#menu-menu-lateral li>.sub-menu li:hover,
+        ul#menu-menu-lateral li>.sub-menu li:focus-within {
+            background-color: grey;
+        }
+
+        ul#menu-menu-lateral li>.sub-menu li:hover>a,
+        ul#menu-menu-lateral li>.sub-menu li:focus-within>a {
+            color: #fff;
+        }
+
+        ul#menu-menu-lateral li>.sub-menu li:last-child {
+            border-bottom: none;
+        }
+
+        ul#menu-menu-lateral li.hover i.right.iconMenu {
+            -ms-transform: rotate(180deg);
+            -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+            color: grey;
+        }
+
+
+        i.iconMenu {
+            color: grey;
+        }
+
+
+
+        /*-------- RESPONSIVO ---------*/
+        /*medium screen*/
+        @media (max-width: 992px) {
+            div#menu-lateral {
+                position: absolute;
+                left: 0px;
+                margin-bottom: 15px;
+                bottom: 0;
+                top: 0;
+                margin-top: 8.5em;
+            }
+
+            ul#menu-menu-lateral li.menu-item a {
+                font-size: 0.9em;
+                line-height: 22px;
+            }
+
+
+            ul#menu-menu-lateral li>.sub-menu li>a {
+                padding-left: 10px;
+            }
+
+
+            ul#menu-menu-lateral li>.sub-menu li {
+                padding: 5px;
+                width: 245px;
+            }
+
+            #menu-lateral ul.menu li:hover>.sub-menu,
+            #menu-lateral ul.menu li:focus-within>.sub-menu {
+                display: inline-table;
+                position: absolute;
+                left: 14.5em;
+                width: 100%;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+                    0 3px 1px -2px rgba(0, 0, 0, 0.12),
+                    0 1px 5px 0 rgba(0, 0, 0, 0.2);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            ul#menu-menu-lateral li {
+                height: 55px;
+                width: 55px;
+            }
+
+            li.menu-item {
+                background-color: grey;
+            }
+
+            li.menu-item i.iconMenu {
+                color: #fff;
+            }
+
+            li.menu-item:hover i.iconMenu,
+            li.menu-item:focus-within i.iconMenu {
+                color: grey;
+            }
+
+            ul#menu-menu-lateral li.menu-item a {
+                visibility: hidden;
+                font-size: 1.2em;
+                display: flex;
+            }
+
+            i.left.iconMenu {
+                font-size: 2.2em;
+                left: 2px;
+                visibility: visible;
+            }
+
+            i.right.iconMenu {
+                display: none;
+            }
+
+
+            ul#menu-menu-lateral li:hover,
+            ul#menu-menu-lateral li:focus-within {
+                background-color: #fff;
+                width: 225px;
+            }
+
+            ul#menu-menu-lateral li:hover>a,
+            ul#menu-menu-lateral li:focus-within>a {
+                visibility: visible;
+                line-height: 45px;
+            }
+
+            #menu-lateral ul.menu li:hover>.sub-menu,
+            #menu-lateral ul.menu li:focus-within>.sub-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="top">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo"><img alt="Logo" accesskey="1"
+                        src="https://images.vexels.com/media/users/3/129200/isolated/preview/493168fb6637295ecab34c1cda03e8c9--cone-do-bast-o-de-doces-de-hortel-pimenta-by-vexels.png"></a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">Sass</a></li>
+                    <li><a href="#">Components</a></li>
+                    <li><a href="#">Javascript</a></li>
+                    <li><a href="#">Mobile</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">Javascript</a></li>
+        <li><a href="mobile.html">Mobile</a></li>
+    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col s2 m4 l5">
+                <div id="menu-lateral">
+                    <ul id="menu-menu-lateral" class="menu">
+                        <li class="menu-item">
+                            <a href="#"><i class="material-icons left iconMenu" aria-hidden='true'>home</i>Início</a>
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#"><i class="material-icons left iconMenu" aria-hidden='true'>warning</i>Avisos e
+                                Mensagens</a>
+                            <i class="material-icons right iconMenu">expand_more</i>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="#">ARIA – Atributo live=”polite”</a></li>
+                                <li class="menu-item"><a href="#">ARIA – Atributo role=”alert”</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#"><i class="material-icons left iconMenu" aria-hidden='true'>live_tv</i>Mídias
+                                Acessíveis</a>
+                            <i class="material-icons right iconMenu">expand_more</i>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="#">Multimídias</a></li>
+                                <li class="menu-item"><a href="#">Atributo ALT</a></li>
+                                <li class="menu-item"><a href="#">Background-image + Background-color</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#"><i class="material-icons left iconMenu"
+                                    aria-hidden='true'>navigation</i>Navegabilidade</a>
+                            <i class="material-icons right iconMenu">expand_more</i>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="#">Links</a></li>
+                                <li class="menu-item"><a href="#">Atalhos</a></li>
+                                <li class="menu-item"><a href="#">Breadcrumbs</a></li>
+                                <li class="menu-item"><a href="#">Accesskey</a></li>
+                                <li class="menu-item"><a href="#">Pular links</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#"><i class="material-icons left iconMenu" aria-hidden='true'>web</i>Layout
+                                Amigável</a>
+                            <i class="material-icons right iconMenu">expand_more</i>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="#">Links indicadores</a></li>
+                                <li class="menu-item"><a href="#">Indicando o idioma</a></li>
+                                <li class="menu-item"><a href="#">Título da página</a></li>
+                                <li class="menu-item"><a href="#">Campos de um formulário</a></li>
+                                <li class="menu-item"><a href="#">Aumento da área clicável</a></li>
+                                <li class="menu-item"><a href="#">Botões</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#"><i class="material-icons left iconMenu" aria-hidden='true'>palette</i>Cores</a>
+                            <i class="material-icons right iconMenu">expand_more</i>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="#">Contraste</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-has-children">
+                            <a href="#"><i class="material-icons left iconMenu"
+                                    aria-hidden='true'>text_format</i>Tipografia</a>
+                            <i class="material-icons right iconMenu">expand_more</i>
+                            <ul class="sub-menu">
+                                <li class="menu-item"><a href="#">Tipo de Fonte</a></li>
+                                <li class="menu-item"><a href="#">Tamanho da Fonte</a></li>
+                                <li class="menu-item"><a href="#">Espaçamento entre linhas</a></li>
+                                <li class="menu-item"><a href="#">Espaçamento entre letras</a></li>
+                                <li class="menu-item"><a href="#">Espaçamento entre palavras</a></li>
+                                <li class="menu-item"><a href="#">Headers</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col s10 m8 l7">
+                <!--conteúdo da página-->
+                <div class="box2">
+                    <h2>
+                        Pular links
+                    </h2> <span><a href="#" id="irconteudo" class="oculto">Início do Conteúdo</a></span>
+                    <p><b>Navegação rápida e fácil</b><br>A opção para pular <i>links</i> é muito útil para os usuários
+                        que navegam com o teclado, com ou sem a ajuda de leitores de tela, inclusive para usuários com
+                        pouca destreza manual que não conseguem usar o mouse ou usuários de laptops, notebooks ou
+                        celulares. Pular <i>links</i> é fundamental para quem navega via teclado, pois faz a “rolagem”
+                        da tela, pulando vários <i>links</i> que seriam lidos, ou textos anteriores ao que se deseja
+                        chegar.</p>
+                    <p>Um exemplo de técnica muito usada é adicionar no início da página o seguinte <i>link</i>:</p>
+                    <p>&lt;a href=”#1s”&gt;Salto para Conteúdo.&lt;/a&gt;<br>
+                        &lt;a name=”1s”&gt;Título do Conteúdo Principal.&lt;/a&gt;
+                    </p>
+                    <span><a href="#" class="oculto">Fim do Conteúdo</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // vertical icon menu function	
+        $("li.menu-item-has-children").hover(
+            function () {
+                $(this).addClass('hover');
+            },
+            function () {
+                $(this).removeClass('hover');
+            }
+        );
+        // sidenav function
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+    </script>
+</body>
+
+</html>

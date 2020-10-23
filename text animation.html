@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.js"></script>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+}
+body {
+  font-family: tahoma;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+}
+
+.hero {
+  background-color: #333;
+  height: 100vh;
+}
+
+.hero-text {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 80px;
+  letter-spacing: 2px;
+}
+.text {
+  display: inline-block;
+  font-size: 1em;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1;
+  color: white;
+}
+</style>
+<body>
+    <section class="hero">
+        <div class="hero-text">
+          <p class="text">w</p>
+        </div>
+      </section>
+      <script>
+          $(function () {
+  $(".text").typed({
+    strings:["Vladimir Vaize", "Web Developer", "Photoshop", "Coffee Drinker"],
+    typeSpeed: 70,
+    backSpeed: 20,
+    backDelay: 1500,
+    showCursor: true,
+    loop: true
+  });
+});
+      </script>
+
+</body>
+</html>

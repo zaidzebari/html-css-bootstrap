@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Laravel Vue SPA</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <!-- we need this token for every request -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}" /> -->
+    <style>
+        @charset "UTF-8";
+
+html {
+  position: relative;
+  min-height: 100%;
+
+}
+
+body {
+  height: 100%;
+}
+
+#wrapper {
+  display: flex;
+}
+
+#wrapper #content-wrapper {
+  overflow-x: hidden;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 80px;
+}
+
+.scroll-to-top {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  display: none;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  color: #fff;
+  background: rgba(52, 58, 64, 0.5);
+  line-height: 46px;
+}
+
+.scroll-to-top:focus,
+.scroll-to-top:hover {
+  color: white;
+}
+
+.scroll-to-top:hover {
+  background: #343a40;
+}
+
+.scroll-to-top i {
+  font-weight: 800;
+}
+
+.smaller {
+  font-size: 0.7rem;
+}
+
+.o-hidden {
+  overflow: hidden !important;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.navbar-nav .form-inline .input-group {
+  width: 100%;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+  color: #fff;
+}
+
+/* .navbar-nav .nav-item.dropdown .dropdown-toggle::after {
+  width: 1rem;
+  text-align: center;
+  float: right;
+  vertical-align: 0;
+  border: 0;
+  font-weight: 900;
+  /* content: "\F105"; 
+  font-family: "Font Awesome 5 Free";
+} */
+
+
+
+.navbar-nav .nav-item.dropdown.no-arrow .dropdown-toggle::after {
+  display: none;
+}
+
+.navbar-nav .nav-item .nav-link:focus {
+  outline: none;
+}
+
+.navbar-nav .nav-item .nav-link .badge {
+  position: absolute;
+  margin-left: 0.75rem;
+  top: 0.3rem;
+  font-weight: 400;
+  font-size: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav .form-inline .input-group {
+    width: auto;
+  }
+}
+
+.sidebar {
+  width: 90px !important;
+  background-color: #212529;
+  min-height: calc(100vh - 56px);
+}
+
+.sidebar .nav-item:last-child {
+  margin-bottom: 1rem;
+}
+
+.sidebar .nav-item .nav-link {
+  text-align: center;
+  padding: 0.75rem 1rem;
+  width: 90px;
+}
+
+.sidebar .nav-item .nav-link span {
+  font-size: 0.65rem;
+  display: block;
+}
+
+.sidebar .nav-item .dropdown-menu {
+  position: absolute !important;
+  transform: none !important;
+  left: calc(90px + 0.5rem) !important;
+  margin: 0;
+}
+
+.sidebar .nav-item .dropdown-menu.dropup {
+  bottom: 0;
+  top: auto !important;
+}
+
+.sidebar .nav-item.dropdown .dropdown-toggle::after {
+  display: none;
+}
+
+.sidebar .nav-item .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar .nav-item .nav-link:active,
+.sidebar .nav-item .nav-link:focus,
+.sidebar .nav-item .nav-link:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.sidebar.toggled {
+  width: 0 !important;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    width: 225px !important;
+  }
+
+  .sidebar .nav-item .nav-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    width: 225px;
+  }
+
+  .sidebar .nav-item .nav-link span {
+    font-size: 1rem;
+    display: inline;
+  }
+
+  .sidebar .nav-item .dropdown-menu {
+    position: static !important;
+    margin: 0 1rem;
+    top: 0;
+  }
+
+  .sidebar .nav-item.dropdown .dropdown-toggle::after {
+    display: block;
+  }
+
+  .sidebar.toggled {
+    overflow: visible;
+    width: 90px !important;
+  }
+
+  .sidebar.toggled .nav-item:last-child {
+    margin-bottom: 1rem;
+  }
+
+  .sidebar.toggled .nav-item .nav-link {
+    text-align: center;
+    padding: 0.75rem 1rem;
+    width: 90px;
+  }
+
+  .sidebar.toggled .nav-item .nav-link span {
+    font-size: 0.65rem;
+    display: block;
+  }
+
+  .sidebar.toggled .nav-item .dropdown-menu {
+    position: absolute !important;
+    transform: none !important;
+    left: calc(90px + 0.5rem) !important;
+    margin: 0;
+  }
+
+  .sidebar.toggled .nav-item .dropdown-menu.dropup {
+    bottom: 0;
+    top: auto !important;
+  }
+
+  .sidebar.toggled .nav-item.dropdown .dropdown-toggle::after {
+    display: none;
+  }
+}
+
+.card-body-icon {
+  position: absolute;
+  z-index: 0;
+  top: -1.25rem;
+  right: -1rem;
+  opacity: 0.4;
+  font-size: 5rem;
+  transform: rotate(15deg);
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+
+:root {
+  --input-padding-x: 0.75rem;
+  --input-padding-y: 0.75rem;
+}
+
+.card-login {
+  max-width: 25rem;
+}
+
+.card-register {
+  max-width: 40rem;
+}
+
+.form-label-group {
+  position: relative;
+}
+
+.form-label-group > input,
+.form-label-group > label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  height: auto;
+}
+
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  transition: all 0.1s ease-in-out;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:-moz-placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:-ms-input-placeholder) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:-moz-placeholder-shown) ~ label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+.form-label-group input:not(:-ms-input-placeholder) ~ label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+footer.sticky-footer {
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(100% - 90px);
+  height: 80px;
+  background-color: #e9ecef;
+}
+
+footer.sticky-footer .copyright {
+  line-height: 1;
+  font-size: 0.8rem;
+}
+
+@media (min-width: 768px) {
+  footer.sticky-footer {
+    width: calc(100% - 225px);
+  }
+}
+
+body.sidebar-toggled footer.sticky-footer {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  body.sidebar-toggled footer.sticky-footer {
+    width: calc(100% - 90px);
+  }
+}
+
+a.nav-link.active {
+  color: #fff !important;
+}
+
+.modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.invalid-feedback {
+  display: inline-block !important;
+}
+
+img.table-image {
+  width: 100px;
+}
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- this store is vuex it is global look store.js you will know what is this -->
+            <a class="navbar-brand" href="index.html">zaid salah</a>
+            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" onclick="togglSideBar" href="#"><i class="fas fa-bars"></i></button>
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+            <ul class="navbar-nav ml-auto ml-md-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="#">Activity Log</a>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" >Logout</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+
+        <div id="wrapper">
+            <ul class="sidebar navbar-nav">
+                <li class="nav-item">
+                    <a href="/home" class="nav-link" exact>
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item" v-if="$store.state.profile.role === 'administrator'">
+                    <a href="/home/categories" class="nav-link" exact>
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Categories</span>
+                    </a>
+                </li>
+                <li class="nav-item" v-if="$store.state.profile.role === 'user'">
+                    <a href="/home/products" class="nav-link" exact>
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Products</span>
+                    </a>
+                </li>
+            </ul>
+
+			<div id="content-wrapper">
+
+
+
+
+                <div class="container-fluid">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="/home">Dashboard</a>
+                      </li>
+                      <li class="breadcrumb-item active">Categories</li>
+                    </ol>
+                
+                    <div class="card mb-3">
+                      <div class="card-header d-flex">
+                        <span>
+                          <i class="fas fa-chart-area"></i>
+                          Categories Management
+                        </span>
+                        <button
+                          class="btn btn-primary btn-sm ml-auto"
+                          v-on:click="showNewCategoryModal"
+                        >
+                          <span class="fa fa-plus"></span> Create New
+                        </button>
+                      </div>
+                      <div class="card-body">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <td>#</td>
+                              <td>Name</td>
+                              <td>Image</td>
+                              <td>Action</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr >
+                              <td>#1</td>
+                              <td>Zaid Salah}</td>
+                              <td>
+                                <img
+                                  src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
+                                  class="table-image"
+                                />
+                              </td>
+                              <td>
+                                <button
+                                  class="btn btn-primary btn-sm"
+                                >
+                                  <span class="fa fa-edit"></span>
+                                </button>
+                                <button
+                                  class="btn btn-danger btn-sm"
+                                >
+                                  <span class="fa fa-trash"></span>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        <div class="text-center" v-if="moreExists">
+                        <button type="button" class="btn btn-primary btn-sm" v-on:click="loadMore"> <span class="fa fa-arrow-down"> Load More</span></button>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <!-- make new component for modal and pass data href this -->
+                
+                    <!-- <b-modal ref="newCategoryModal" hide-footer title="Add New Category">
+                      <div class="d-block">
+                        <form v-on:submit.prevent="createCategory">
+                          <div class="form-group">
+                            <label for="name">Enter Name</label>
+                            <input
+                              type="text"
+                              v-model="categoryData.name"
+                              class="form-control"
+                              id="name"
+                              placeholder="Enter category name"
+                            />
+                            <div class="invalid-feedback" v-if="errors.name">
+                              {{ errors.name[0] }}
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="image">Choose an image</label>
+                            <div v-if="categoryData.image.name">
+                              <img src="" ref="newCategoryImageDispaly" class="w-150px" />
+                            </div>
+                            <input
+                              type="file"
+                              v-on:change="attachImage"
+                              ref="newCategoryImage"
+                              class="form-control"
+                              id="image"
+                            />
+                            <div class="invalid-feedback" v-if="errors.image">
+                              {{ errors.image[0] }}
+                            </div>
+                          </div>
+                
+                          <hr />
+                          <div class="text-right">
+                            <button
+                              type="button"
+                              class="btn btn-default"
+                              v-on:click="hideNewCategoryModal"
+                            >
+                              Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                              <span class="fa fa-check"></span> Save
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </b-modal> -->
+                
+                    <!-- <b-modal ref="editCategoryModal" hide-footer title="Update Category">
+                      <div class="d-block">
+                        <form v-on:submit.prevent="updateCategory">
+                          <div class="form-group">
+                            <label for="name">Enter Name</label>
+                            <input
+                              type="text"
+                              v-model="editCategoryData.name"
+                              class="form-control"
+                              id="name"
+                              placeholder="Enter category name"
+                            />
+                            <div class="invalid-feedback" v-if="errors.name">
+                              {{ errors.name[0] }}
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="image">Choose an image</label>
+                            <div>
+                              <img
+                                :src="`${$store.state.serverPath}/storage/${editCategoryData.image}`"
+                                ref="editCategoryImageDispaly"
+                                class="w-25"
+                              />
+                            </div>
+                            <input
+                              type="file"
+                              v-on:change="editAttachImage"
+                              ref="editCategoryImage"
+                              class="form-control"
+                              id="image"
+                            />
+                            <div class="invalid-feedback" v-if="errors.image">
+                              {{ errors.image[0] }}
+                            </div>
+                          </div>
+                
+                          <hr />
+                          <div class="text-right">
+                            <button
+                              type="button"
+                              class="btn btn-default"
+                              v-on:click="hideEditCategoryModal"
+                            >
+                              Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                              <span class="fa fa-check"></span> Update
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </b-modal> -->
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+				<footer class="sticky-footer">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright © All right reserved href zaid salah</span>
+                        </div>
+                    </div>
+                </footer>
+			</div>
+        </div>
+
+
+
+
+
+
+    </div>
+    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
+</body>
+
+</html>
